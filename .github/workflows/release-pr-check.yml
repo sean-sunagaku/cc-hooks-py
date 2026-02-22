@@ -11,7 +11,7 @@ jobs:
     if: contains(github.event.pull_request.labels.*.name, 'release')
     steps:
       - name: Validate checked items in PR body
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const body = (context.payload.pull_request.body || '').toLowerCase();
