@@ -1,0 +1,137 @@
+{
+  "$defs": {
+    "PermissionDecision": {
+      "enum": [
+        "allow",
+        "deny",
+        "ask"
+      ],
+      "title": "PermissionDecision",
+      "type": "string"
+    },
+    "PreToolUseHookSpecific": {
+      "properties": {
+        "hookEventName": {
+          "const": "PreToolUse",
+          "default": "PreToolUse",
+          "title": "Hookeventname",
+          "type": "string"
+        },
+        "permissionDecision": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PermissionDecision"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "permissionDecisionReason": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Permissiondecisionreason"
+        },
+        "updatedInput": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Updatedinput"
+        },
+        "additionalContext": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Additionalcontext"
+        }
+      },
+      "title": "PreToolUseHookSpecific",
+      "type": "object"
+    }
+  },
+  "additionalProperties": true,
+  "properties": {
+    "continue": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Continue"
+    },
+    "stopReason": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Stopreason"
+    },
+    "suppressOutput": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Suppressoutput"
+    },
+    "systemMessage": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Systemmessage"
+    },
+    "hookSpecificOutput": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PreToolUseHookSpecific"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "title": "PreToolUseOutput",
+  "type": "object"
+}

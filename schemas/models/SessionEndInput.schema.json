@@ -1,0 +1,40 @@
+{
+  "additionalProperties": true,
+  "properties": {
+    "sessionId": {
+      "title": "Sessionid",
+      "type": "string"
+    },
+    "transcriptPath": {
+      "title": "Transcriptpath",
+      "type": "string"
+    },
+    "cwd": {
+      "title": "Cwd",
+      "type": "string"
+    },
+    "permissionMode": {
+      "title": "Permissionmode",
+      "type": "string"
+    },
+    "hookEventName": {
+      "const": "SessionEnd",
+      "default": "SessionEnd",
+      "title": "Hookeventname",
+      "type": "string"
+    },
+    "reason": {
+      "title": "Reason",
+      "type": "string"
+    }
+  },
+  "required": [
+    "sessionId",
+    "transcriptPath",
+    "cwd",
+    "permissionMode",
+    "reason"
+  ],
+  "title": "SessionEndInput",
+  "type": "object"
+}

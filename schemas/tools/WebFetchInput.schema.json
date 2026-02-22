@@ -1,0 +1,38 @@
+{
+  "additionalProperties": true,
+  "properties": {
+    "url": {
+      "title": "Url",
+      "type": "string"
+    },
+    "prompt": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Prompt"
+    },
+    "timeoutMs": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Timeoutms"
+    }
+  },
+  "required": [
+    "url"
+  ],
+  "title": "WebFetchInput",
+  "type": "object"
+}

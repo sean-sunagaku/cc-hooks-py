@@ -1,0 +1,45 @@
+{
+  "additionalProperties": true,
+  "properties": {
+    "sessionId": {
+      "title": "Sessionid",
+      "type": "string"
+    },
+    "transcriptPath": {
+      "title": "Transcriptpath",
+      "type": "string"
+    },
+    "cwd": {
+      "title": "Cwd",
+      "type": "string"
+    },
+    "permissionMode": {
+      "title": "Permissionmode",
+      "type": "string"
+    },
+    "hookEventName": {
+      "const": "SubagentStart",
+      "default": "SubagentStart",
+      "title": "Hookeventname",
+      "type": "string"
+    },
+    "agentId": {
+      "title": "Agentid",
+      "type": "string"
+    },
+    "agentType": {
+      "title": "Agenttype",
+      "type": "string"
+    }
+  },
+  "required": [
+    "sessionId",
+    "transcriptPath",
+    "cwd",
+    "permissionMode",
+    "agentId",
+    "agentType"
+  ],
+  "title": "SubagentStartInput",
+  "type": "object"
+}

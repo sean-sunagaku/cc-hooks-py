@@ -1,0 +1,81 @@
+{
+  "additionalProperties": true,
+  "properties": {
+    "sessionId": {
+      "title": "Sessionid",
+      "type": "string"
+    },
+    "transcriptPath": {
+      "title": "Transcriptpath",
+      "type": "string"
+    },
+    "cwd": {
+      "title": "Cwd",
+      "type": "string"
+    },
+    "permissionMode": {
+      "title": "Permissionmode",
+      "type": "string"
+    },
+    "hookEventName": {
+      "const": "TaskCompleted",
+      "default": "TaskCompleted",
+      "title": "Hookeventname",
+      "type": "string"
+    },
+    "taskId": {
+      "title": "Taskid",
+      "type": "string"
+    },
+    "taskSubject": {
+      "title": "Tasksubject",
+      "type": "string"
+    },
+    "taskDescription": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Taskdescription"
+    },
+    "teammateName": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Teammatename"
+    },
+    "teamName": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Teamname"
+    }
+  },
+  "required": [
+    "sessionId",
+    "transcriptPath",
+    "cwd",
+    "permissionMode",
+    "taskId",
+    "taskSubject"
+  ],
+  "title": "TaskCompletedInput",
+  "type": "object"
+}

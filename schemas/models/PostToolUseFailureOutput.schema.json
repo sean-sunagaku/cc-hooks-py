@@ -1,0 +1,92 @@
+{
+  "$defs": {
+    "PostToolUseFailureHookSpecific": {
+      "properties": {
+        "hookEventName": {
+          "const": "PostToolUseFailure",
+          "default": "PostToolUseFailure",
+          "title": "Hookeventname",
+          "type": "string"
+        },
+        "additionalContext": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Additionalcontext"
+        }
+      },
+      "title": "PostToolUseFailureHookSpecific",
+      "type": "object"
+    }
+  },
+  "additionalProperties": true,
+  "properties": {
+    "continue": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Continue"
+    },
+    "stopReason": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Stopreason"
+    },
+    "suppressOutput": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Suppressoutput"
+    },
+    "systemMessage": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Systemmessage"
+    },
+    "hookSpecificOutput": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PostToolUseFailureHookSpecific"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "title": "PostToolUseFailureOutput",
+  "type": "object"
+}

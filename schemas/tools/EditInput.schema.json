@@ -1,0 +1,29 @@
+{
+  "additionalProperties": true,
+  "properties": {
+    "filePath": {
+      "title": "Filepath",
+      "type": "string"
+    },
+    "oldString": {
+      "title": "Oldstring",
+      "type": "string"
+    },
+    "newString": {
+      "title": "Newstring",
+      "type": "string"
+    },
+    "replaceAll": {
+      "default": false,
+      "title": "Replaceall",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "filePath",
+    "oldString",
+    "newString"
+  ],
+  "title": "EditInput",
+  "type": "object"
+}

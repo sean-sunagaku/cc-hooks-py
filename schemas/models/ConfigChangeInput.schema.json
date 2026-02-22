@@ -1,0 +1,52 @@
+{
+  "additionalProperties": true,
+  "properties": {
+    "sessionId": {
+      "title": "Sessionid",
+      "type": "string"
+    },
+    "transcriptPath": {
+      "title": "Transcriptpath",
+      "type": "string"
+    },
+    "cwd": {
+      "title": "Cwd",
+      "type": "string"
+    },
+    "permissionMode": {
+      "title": "Permissionmode",
+      "type": "string"
+    },
+    "hookEventName": {
+      "const": "ConfigChange",
+      "default": "ConfigChange",
+      "title": "Hookeventname",
+      "type": "string"
+    },
+    "source": {
+      "title": "Source",
+      "type": "string"
+    },
+    "filePath": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Filepath"
+    }
+  },
+  "required": [
+    "sessionId",
+    "transcriptPath",
+    "cwd",
+    "permissionMode",
+    "source"
+  ],
+  "title": "ConfigChangeInput",
+  "type": "object"
+}

@@ -1,0 +1,8 @@
+{
+  "hookSpecificOutput": {
+    "hookEventName": "PostToolUse",
+    "updatedMCPToolOutput": {
+      "summary": "normalized"
+    }
+  }
+}

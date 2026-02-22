@@ -1,0 +1,31 @@
+{
+  "additionalProperties": true,
+  "properties": {
+    "description": {
+      "title": "Description",
+      "type": "string"
+    },
+    "prompt": {
+      "title": "Prompt",
+      "type": "string"
+    },
+    "subagentType": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Subagenttype"
+    }
+  },
+  "required": [
+    "description",
+    "prompt"
+  ],
+  "title": "TaskInput",
+  "type": "object"
+}

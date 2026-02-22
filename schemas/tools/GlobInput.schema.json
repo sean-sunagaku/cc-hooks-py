@@ -1,0 +1,38 @@
+{
+  "additionalProperties": true,
+  "properties": {
+    "pattern": {
+      "title": "Pattern",
+      "type": "string"
+    },
+    "path": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Path"
+    },
+    "caseSensitive": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Casesensitive"
+    }
+  },
+  "required": [
+    "pattern"
+  ],
+  "title": "GlobInput",
+  "type": "object"
+}

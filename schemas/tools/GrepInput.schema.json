@@ -1,0 +1,62 @@
+{
+  "additionalProperties": true,
+  "properties": {
+    "pattern": {
+      "title": "Pattern",
+      "type": "string"
+    },
+    "path": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Path"
+    },
+    "include": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Include"
+    },
+    "multiline": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Multiline"
+    },
+    "ignoreCase": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Ignorecase"
+    }
+  },
+  "required": [
+    "pattern"
+  ],
+  "title": "GrepInput",
+  "type": "object"
+}

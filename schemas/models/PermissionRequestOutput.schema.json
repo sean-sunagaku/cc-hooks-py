@@ -1,0 +1,134 @@
+{
+  "$defs": {
+    "PermissionRequestDecision": {
+      "properties": {
+        "behavior": {
+          "enum": [
+            "allow",
+            "deny",
+            "ask"
+          ],
+          "title": "Behavior",
+          "type": "string"
+        },
+        "message": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Message"
+        },
+        "updatedInput": {
+          "anyOf": [
+            {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Updatedinput"
+        }
+      },
+      "required": [
+        "behavior"
+      ],
+      "title": "PermissionRequestDecision",
+      "type": "object"
+    },
+    "PermissionRequestHookSpecific": {
+      "properties": {
+        "hookEventName": {
+          "const": "PermissionRequest",
+          "default": "PermissionRequest",
+          "title": "Hookeventname",
+          "type": "string"
+        },
+        "decision": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PermissionRequestDecision"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "title": "PermissionRequestHookSpecific",
+      "type": "object"
+    }
+  },
+  "additionalProperties": true,
+  "properties": {
+    "continue": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Continue"
+    },
+    "stopReason": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Stopreason"
+    },
+    "suppressOutput": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Suppressoutput"
+    },
+    "systemMessage": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Systemmessage"
+    },
+    "hookSpecificOutput": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PermissionRequestHookSpecific"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "title": "PermissionRequestOutput",
+  "type": "object"
+}

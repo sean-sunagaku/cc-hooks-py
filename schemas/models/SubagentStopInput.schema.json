@@ -1,0 +1,67 @@
+{
+  "additionalProperties": true,
+  "properties": {
+    "sessionId": {
+      "title": "Sessionid",
+      "type": "string"
+    },
+    "transcriptPath": {
+      "title": "Transcriptpath",
+      "type": "string"
+    },
+    "cwd": {
+      "title": "Cwd",
+      "type": "string"
+    },
+    "permissionMode": {
+      "title": "Permissionmode",
+      "type": "string"
+    },
+    "hookEventName": {
+      "const": "SubagentStop",
+      "default": "SubagentStop",
+      "title": "Hookeventname",
+      "type": "string"
+    },
+    "stopHookActive": {
+      "title": "Stophookactive",
+      "type": "boolean"
+    },
+    "agentId": {
+      "title": "Agentid",
+      "type": "string"
+    },
+    "agentType": {
+      "title": "Agenttype",
+      "type": "string"
+    },
+    "agentTranscriptPath": {
+      "title": "Agenttranscriptpath",
+      "type": "string"
+    },
+    "lastAssistantMessage": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Lastassistantmessage"
+    }
+  },
+  "required": [
+    "sessionId",
+    "transcriptPath",
+    "cwd",
+    "permissionMode",
+    "stopHookActive",
+    "agentId",
+    "agentType",
+    "agentTranscriptPath"
+  ],
+  "title": "SubagentStopInput",
+  "type": "object"
+}

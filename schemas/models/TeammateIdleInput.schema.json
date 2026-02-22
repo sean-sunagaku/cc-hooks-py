@@ -1,0 +1,45 @@
+{
+  "additionalProperties": true,
+  "properties": {
+    "sessionId": {
+      "title": "Sessionid",
+      "type": "string"
+    },
+    "transcriptPath": {
+      "title": "Transcriptpath",
+      "type": "string"
+    },
+    "cwd": {
+      "title": "Cwd",
+      "type": "string"
+    },
+    "permissionMode": {
+      "title": "Permissionmode",
+      "type": "string"
+    },
+    "hookEventName": {
+      "const": "TeammateIdle",
+      "default": "TeammateIdle",
+      "title": "Hookeventname",
+      "type": "string"
+    },
+    "teammate_name": {
+      "title": "Teammate Name",
+      "type": "string"
+    },
+    "team_name": {
+      "title": "Team Name",
+      "type": "string"
+    }
+  },
+  "required": [
+    "sessionId",
+    "transcriptPath",
+    "cwd",
+    "permissionMode",
+    "teammate_name",
+    "team_name"
+  ],
+  "title": "TeammateIdleInput",
+  "type": "object"
+}

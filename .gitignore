@@ -1,0 +1,8 @@
+# Python bytecode
+*.pyc
+__pycache__/
+.venv312/
+build/
+dist/
+*.egg-info/
+.e2e-logs/

@@ -1,0 +1,52 @@
+{
+  "additionalProperties": true,
+  "properties": {
+    "sessionId": {
+      "title": "Sessionid",
+      "type": "string"
+    },
+    "transcriptPath": {
+      "title": "Transcriptpath",
+      "type": "string"
+    },
+    "cwd": {
+      "title": "Cwd",
+      "type": "string"
+    },
+    "permissionMode": {
+      "title": "Permissionmode",
+      "type": "string"
+    },
+    "hookEventName": {
+      "const": "Stop",
+      "default": "Stop",
+      "title": "Hookeventname",
+      "type": "string"
+    },
+    "stopHookActive": {
+      "title": "Stophookactive",
+      "type": "boolean"
+    },
+    "lastAssistantMessage": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Lastassistantmessage"
+    }
+  },
+  "required": [
+    "sessionId",
+    "transcriptPath",
+    "cwd",
+    "permissionMode",
+    "stopHookActive"
+  ],
+  "title": "StopInput",
+  "type": "object"
+}

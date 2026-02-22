@@ -1,0 +1,10 @@
+{
+  "hooks": {
+    "SessionStart": "python /absolute/path/to/examples/session_start_context.py",
+    "PreToolUse": "python /absolute/path/to/examples/deny_bash_rm.py",
+    "PostToolUse": "python /absolute/path/to/examples/log_tool_usage.py",
+    "UserPromptSubmit": "python /absolute/path/to/examples/block_prompt.py",
+    "PreCompact": "python /absolute/path/to/examples/pre_compact_guard.py",
+    "Stop": "python /absolute/path/to/examples/stop_block_unless_safe.py"
+  }
+}

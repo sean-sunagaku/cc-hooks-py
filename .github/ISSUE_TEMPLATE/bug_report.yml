@@ -1,0 +1,34 @@
+name: Bug report
+description: Report a bug in cc-hooks-py
+labels: [bug]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: payload
+    attributes:
+      label: Hook payload (redacted)
+      description: Include input payload snippet if possible
+      render: json
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: textarea
+    id: env
+    attributes:
+      label: Environment
+      description: Python version, cc-hooks-py version, Claude Code version

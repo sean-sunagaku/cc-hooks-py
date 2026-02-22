@@ -1,0 +1,26 @@
+{
+  "additionalProperties": true,
+  "properties": {
+    "query": {
+      "title": "Query",
+      "type": "string"
+    },
+    "recencyDays": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Recencydays"
+    }
+  },
+  "required": [
+    "query"
+  ],
+  "title": "WebSearchInput",
+  "type": "object"
+}

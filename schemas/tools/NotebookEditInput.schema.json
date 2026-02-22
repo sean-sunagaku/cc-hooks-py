@@ -1,0 +1,50 @@
+{
+  "additionalProperties": true,
+  "properties": {
+    "notebookPath": {
+      "title": "Notebookpath",
+      "type": "string"
+    },
+    "cellId": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Cellid"
+    },
+    "edit": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Edit"
+    },
+    "content": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Content"
+    }
+  },
+  "required": [
+    "notebookPath"
+  ],
+  "title": "NotebookEditInput",
+  "type": "object"
+}

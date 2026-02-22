@@ -1,0 +1,57 @@
+{
+  "additionalProperties": true,
+  "properties": {
+    "toolName": {
+      "title": "Toolname",
+      "type": "string"
+    },
+    "toolInput": {
+      "additionalProperties": true,
+      "title": "Toolinput",
+      "type": "object"
+    },
+    "sessionId": {
+      "title": "Sessionid",
+      "type": "string"
+    },
+    "transcriptPath": {
+      "title": "Transcriptpath",
+      "type": "string"
+    },
+    "cwd": {
+      "title": "Cwd",
+      "type": "string"
+    },
+    "permissionMode": {
+      "title": "Permissionmode",
+      "type": "string"
+    },
+    "hookEventName": {
+      "const": "PostToolUse",
+      "default": "PostToolUse",
+      "title": "Hookeventname",
+      "type": "string"
+    },
+    "toolResponse": {
+      "additionalProperties": true,
+      "title": "Toolresponse",
+      "type": "object"
+    },
+    "toolUseId": {
+      "title": "Tooluseid",
+      "type": "string"
+    }
+  },
+  "required": [
+    "toolName",
+    "toolInput",
+    "sessionId",
+    "transcriptPath",
+    "cwd",
+    "permissionMode",
+    "toolResponse",
+    "toolUseId"
+  ],
+  "title": "PostToolUseInput",
+  "type": "object"
+}

@@ -1,0 +1,68 @@
+{
+  "additionalProperties": true,
+  "properties": {
+    "toolName": {
+      "title": "Toolname",
+      "type": "string"
+    },
+    "toolInput": {
+      "additionalProperties": true,
+      "title": "Toolinput",
+      "type": "object"
+    },
+    "sessionId": {
+      "title": "Sessionid",
+      "type": "string"
+    },
+    "transcriptPath": {
+      "title": "Transcriptpath",
+      "type": "string"
+    },
+    "cwd": {
+      "title": "Cwd",
+      "type": "string"
+    },
+    "permissionMode": {
+      "title": "Permissionmode",
+      "type": "string"
+    },
+    "hookEventName": {
+      "const": "PostToolUseFailure",
+      "default": "PostToolUseFailure",
+      "title": "Hookeventname",
+      "type": "string"
+    },
+    "toolUseId": {
+      "title": "Tooluseid",
+      "type": "string"
+    },
+    "error": {
+      "title": "Error",
+      "type": "string"
+    },
+    "isInterrupt": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Isinterrupt"
+    }
+  },
+  "required": [
+    "toolName",
+    "toolInput",
+    "sessionId",
+    "transcriptPath",
+    "cwd",
+    "permissionMode",
+    "toolUseId",
+    "error"
+  ],
+  "title": "PostToolUseFailureInput",
+  "type": "object"
+}

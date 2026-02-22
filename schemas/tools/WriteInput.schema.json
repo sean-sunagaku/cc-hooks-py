@@ -1,0 +1,19 @@
+{
+  "additionalProperties": true,
+  "properties": {
+    "filePath": {
+      "title": "Filepath",
+      "type": "string"
+    },
+    "content": {
+      "title": "Content",
+      "type": "string"
+    }
+  },
+  "required": [
+    "filePath",
+    "content"
+  ],
+  "title": "WriteInput",
+  "type": "object"
+}

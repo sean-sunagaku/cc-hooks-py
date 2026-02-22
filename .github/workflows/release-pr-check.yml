@@ -1,0 +1,35 @@
+name: Release PR Checklist
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, labeled, unlabeled, reopened]
+
+jobs:
+  checklist:
+    name: Verify Release PR Checklist
+    runs-on: ubuntu-latest
+    if: contains(github.event.pull_request.labels.*.name, 'release')
+    steps:
+      - name: Validate checked items in PR body
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = (context.payload.pull_request.body || '').toLowerCase();
+            const required = [
+              'make bump-patch',
+              'changelog.md',
+              'make release-check'
+            ];
+
+            const missing = required.filter(item => {
+              const idx = body.indexOf(item);
+              if (idx === -1) return true;
+              const lineStart = body.lastIndexOf('\n', idx) + 1;
+              const lineEnd = body.indexOf('\n', idx);
+              const line = body.substring(lineStart, lineEnd === -1 ? body.length : lineEnd);
+              return !(line.includes('[x]') || line.includes('[X]'));
+            });
+
+            if (missing.length > 0) {
+              core.setFailed(`Missing checked release checklist items: ${missing.join(', ')}`);
+            }

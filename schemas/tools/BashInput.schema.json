@@ -1,0 +1,50 @@
+{
+  "additionalProperties": true,
+  "properties": {
+    "command": {
+      "title": "Command",
+      "type": "string"
+    },
+    "description": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Description"
+    },
+    "timeout": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Timeout"
+    },
+    "runInBackground": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Runinbackground"
+    }
+  },
+  "required": [
+    "command"
+  ],
+  "title": "BashInput",
+  "type": "object"
+}

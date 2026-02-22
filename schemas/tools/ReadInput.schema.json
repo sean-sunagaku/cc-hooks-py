@@ -1,0 +1,38 @@
+{
+  "additionalProperties": true,
+  "properties": {
+    "filePath": {
+      "title": "Filepath",
+      "type": "string"
+    },
+    "offset": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Offset"
+    },
+    "limit": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Limit"
+    }
+  },
+  "required": [
+    "filePath"
+  ],
+  "title": "ReadInput",
+  "type": "object"
+}
