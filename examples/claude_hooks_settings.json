@@ -1,10 +1,154 @@
 {
   "hooks": {
-    "SessionStart": "python /absolute/path/to/examples/session_start_context.py",
-    "PreToolUse": "python /absolute/path/to/examples/deny_bash_rm.py",
-    "PostToolUse": "python /absolute/path/to/examples/log_tool_usage.py",
-    "UserPromptSubmit": "python /absolute/path/to/examples/block_prompt.py",
-    "PreCompact": "python /absolute/path/to/examples/pre_compact_guard.py",
-    "Stop": "python /absolute/path/to/examples/stop_block_unless_safe.py"
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python /absolute/path/to/examples/session_start_context.py"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python /absolute/path/to/examples/noop_any_hook.py"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python /absolute/path/to/examples/block_prompt.py"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python /absolute/path/to/examples/deny_bash_rm.py"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python /absolute/path/to/examples/log_tool_usage.py"
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python /absolute/path/to/examples/noop_any_hook.py"
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python /absolute/path/to/examples/noop_any_hook.py"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python /absolute/path/to/examples/noop_any_hook.py"
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python /absolute/path/to/examples/noop_any_hook.py"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python /absolute/path/to/examples/noop_any_hook.py"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python /absolute/path/to/examples/stop_block_unless_safe.py"
+          }
+        ]
+      }
+    ],
+    "TeammateIdle": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python /absolute/path/to/examples/noop_any_hook.py"
+          }
+        ]
+      }
+    ],
+    "TaskCompleted": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python /absolute/path/to/examples/noop_any_hook.py"
+          }
+        ]
+      }
+    ],
+    "ConfigChange": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python /absolute/path/to/examples/noop_any_hook.py"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python /absolute/path/to/examples/pre_compact_guard.py"
+          }
+        ]
+      }
+    ]
   }
 }
