@@ -9,7 +9,11 @@ from pathlib import Path
 from shutil import rmtree
 from shutil import copy2
 
+from cc_hooks.enums import HookEvent
+
 ROOT = Path(__file__).resolve().parent.parent
+REGISTERED_EVENTS = [event.value for event in HookEvent]
+OBSERVED_EVENTS = ["SessionStart", "PreToolUse", "PostToolUse", "Stop"]
 
 
 def _write_file(path: Path, content: str) -> None:
@@ -29,32 +33,14 @@ def _build_settings(tmp: Path, log_hook: Path) -> Path:
 
     settings = {
         "hooks": {
-            "SessionStart": [
-                {
-                    "matcher": "startup",
-                    "hooks": [{"type": "command", "command": cmd("SessionStart")}],
-                }
-            ],
-            "PreToolUse": [
-                {
-                    "matcher": "Read",
-                    "hooks": [{"type": "command", "command": cmd("PreToolUse")}],
-                }
-            ],
-            "PostToolUse": [
-                {
-                    "matcher": "Read",
-                    "hooks": [{"type": "command", "command": cmd("PostToolUse")}],
-                }
-            ],
-            "Stop": [
-                {
-                    "matcher": "",
-                    "hooks": [{"type": "command", "command": cmd("Stop")}],
-                }
-            ],
+            event: [{"hooks": [{"type": "command", "command": cmd(event)}]}] for event in REGISTERED_EVENTS
         }
     }
+
+    # Keep the runtime deterministic for the events this E2E intentionally triggers.
+    settings["hooks"]["PreToolUse"][0]["matcher"] = "Read"
+    settings["hooks"]["PostToolUse"][0]["matcher"] = "Read"
+
     _write_file(settings_path, json.dumps(settings, ensure_ascii=False))
     return settings_path
 
@@ -114,11 +100,10 @@ def _load_last_json_line(path: Path) -> dict[str, object] | None:
 
 
 def _validate_payloads(logs_dir: Path) -> tuple[bool, str, dict[str, object]]:
-    required = ["SessionStart", "PreToolUse", "PostToolUse", "Stop"]
     report_events: dict[str, dict[str, object]] = {}
     missing: list[str] = []
 
-    for event in required:
+    for event in OBSERVED_EVENTS:
         log_file = logs_dir / f"{event}.jsonl"
         event_report: dict[str, object] = {
             "log_file": str(log_file),
@@ -154,7 +139,11 @@ def _validate_payloads(logs_dir: Path) -> tuple[bool, str, dict[str, object]]:
             return (
                 False,
                 f"{event}: hook_event_name mismatch (got={event_name!r})",
-                {"required_events": required, "events": report_events},
+                {
+                    "registered_events": REGISTERED_EVENTS,
+                    "observed_events": OBSERVED_EVENTS,
+                    "events": report_events,
+                },
             )
         event_report["event_name_match"] = True
 
@@ -166,7 +155,11 @@ def _validate_payloads(logs_dir: Path) -> tuple[bool, str, dict[str, object]]:
                 return (
                     False,
                     f"PreToolUse: expected tool_name=Read (got={tool_name!r})",
-                    {"required_events": required, "events": report_events},
+                    {
+                        "registered_events": REGISTERED_EVENTS,
+                        "observed_events": OBSERVED_EVENTS,
+                        "events": report_events,
+                    },
                 )
             event_report["tool_name_match"] = True
         elif event == "PostToolUse":
@@ -177,7 +170,11 @@ def _validate_payloads(logs_dir: Path) -> tuple[bool, str, dict[str, object]]:
                 return (
                     False,
                     f"PostToolUse: expected tool_name=Read (got={tool_name!r})",
-                    {"required_events": required, "events": report_events},
+                    {
+                        "registered_events": REGISTERED_EVENTS,
+                        "observed_events": OBSERVED_EVENTS,
+                        "events": report_events,
+                    },
                 )
             event_report["tool_name_match"] = True
             tool_response = _get_field(payload, "tool_response", "toolResponse")
@@ -186,7 +183,11 @@ def _validate_payloads(logs_dir: Path) -> tuple[bool, str, dict[str, object]]:
                 return (
                     False,
                     "PostToolUse: missing tool_response/toolResponse object",
-                    {"required_events": required, "events": report_events},
+                    {
+                        "registered_events": REGISTERED_EVENTS,
+                        "observed_events": OBSERVED_EVENTS,
+                        "events": report_events,
+                    },
                 )
         elif event == "Stop":
             # Stop payload fields may vary by version, so only event name is strictly validated.
@@ -196,12 +197,23 @@ def _validate_payloads(logs_dir: Path) -> tuple[bool, str, dict[str, object]]:
         return (
             False,
             f"missing hook logs: {', '.join(missing)}",
-            {"required_events": required, "events": report_events},
+            {
+                "registered_events": REGISTERED_EVENTS,
+                "observed_events": OBSERVED_EVENTS,
+                "events": report_events,
+            },
         )
     return (
         True,
-        "validated hook payloads for SessionStart/PreToolUse/PostToolUse/Stop",
-        {"required_events": required, "events": report_events},
+        (
+            f"registered {len(REGISTERED_EVENTS)} hook events and validated runtime payloads for "
+            "SessionStart/PreToolUse/PostToolUse/Stop"
+        ),
+        {
+            "registered_events": REGISTERED_EVENTS,
+            "observed_events": OBSERVED_EVENTS,
+            "events": report_events,
+        },
     )
 
 

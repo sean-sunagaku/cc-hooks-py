@@ -208,6 +208,6 @@ It executes:
 
 including cases with unexpected payload fields.
 
-## Example Claude Hook Configuration (snippet)
+## Example Claude Hook Configuration
 
-See `/Users/babashunsuke/Repository/cc-hooks-py/examples/claude_hooks_settings.json` for a sample mapping.
+See `/Users/babashunsuke/Repository/cc-hooks-py/examples/claude_hooks_settings.json` for a full Claude Code settings example that registers all 15 supported hook events with the current nested `hooks` / `matcher` format.
